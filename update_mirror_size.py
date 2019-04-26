@@ -1,6 +1,7 @@
 import re
 import os
 
+#Edit these before use
 WORKER_NAME = "worker"
 CONFIG_PATH = "path/to/worker.conf"
 
@@ -20,7 +21,6 @@ for mirror_name in names:
     log = "/var/log/tunasync/"+mirror_name+"/latest"
     with open(log) as f:
         buffer = f.readlines()
-        #reg = re.compile('(\d+\.\d)')    #[0-9\\.]+[KMGT]
         match = re.findall("[0-9\\.]+[KMGT]", buffer[-1])
         if match:
             mirror_size = str(match[0])
